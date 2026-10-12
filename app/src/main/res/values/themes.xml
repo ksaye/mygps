@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyGps" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/bar</item>
+        <item name="colorPrimaryDark">@color/bar_dark</item>
+        <item name="android:statusBarColor">@color/bar_dark</item>
+        <item name="android:windowBackground">@color/page</item>
+    </style>
+
+    <style name="Label">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/label</item>
+    </style>
+
+    <style name="Value">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textColor">@color/value</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">16sp</item>
+        <item name="android:autoSizeMaxTextSize">34sp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <!-- Gap so a long value shrinks instead of running into the next column. -->
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+</resources>

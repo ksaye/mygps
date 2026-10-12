@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bar">#2E3B9E</color>
+    <color name="bar_dark">#1F2A80</color>
+    <color name="page">#EEEEEE</color>
+    <color name="card">#FFFFFF</color>
+    <color name="label">#222222</color>
+    <color name="value">#3D4FE0</color>
+    <color name="muted">#999999</color>
+    <color name="ic_launcher_background">#2E3B9E</color>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Map pin with a crosshair ring, white on the indigo background. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3"
+        android:pathData="M54,30 A24,24 0 1,1 53.99,30 Z" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M54,36 C46,36 40,42 40,50 C40,60 54,74 54,74 C54,74 68,60 68,50 C68,42 62,36 54,36 Z M54,45 A5,5 0 1,0 54.01,45 Z" />
+</vector>

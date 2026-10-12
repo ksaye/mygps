@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
+        android:background="@color/bar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/share"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Share location"
+            android:src="@drawable/ic_share" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    <ScrollView
+        android:id="@+id/dataPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="#D1E7DD"
+                android:padding="12dp"
+                android:textColor="#0F5132"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="#FFF3CD"
+                android:padding="12dp"
+                android:textColor="#664D03"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <!-- Position + compass -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card"
+                android:elevation="1dp">
+
+                <LinearLayout
+                    android:id="@+id/coordsCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <io.github.ksaye.mygps.CompassView
+                            android:id="@+id/compass"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp" />
+
+                        <TextView
+                            android:id="@+id/heading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="--°"
+                            android:textColor="@color/muted"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:id="@+id/cardinal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/muted"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Latitude" />
+                        <TextView android:id="@+id/lat" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                        <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Longitude" />
+                        <TextView android:id="@+id/lon" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/copy"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="top|end"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Copy coordinates"
+                    android:src="@drawable/ic_copy" />
+            </FrameLayout>
+
+            <!-- Fix quality -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fixed/All" />
+                        <TextView android:id="@+id/sats" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Accuracy" />
+                        <TextView android:id="@+id/accuracy" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fixed time" />
+                        <TextView android:id="@+id/ttff" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Last fix" />
+                        <TextView android:id="@+id/lastFix" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Motion -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/card"
+                android:elevation="1dp"
+                android:orientation="horizontal"
+                android:padding="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Speed" />
+                    <TextView android:id="@+id/speed" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Altitude" />
+                    <TextView android:id="@+id/altitude" style="@style/Value" android:layout_width="match_parent" android:layout_height="48dp" android:text="--" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/plusCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textColor="#444444"
+                android:textIsSelectable="true"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Tap the coordinates to switch DMS / decimal"
+                android:textColor="@color/muted"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textColor="@color/muted"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/mapPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/mapReadout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="10dp"
+            android:background="@drawable/card"
+            android:elevation="2dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:textColor="@color/label"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/recenter"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:background="@drawable/round_button"
+            android:contentDescription="Center on my location"
+            android:elevation="4dp"
+            android:src="@drawable/ic_my_location" />
+
+        <ImageButton
+            android:id="@+id/offlineMaps"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="10dp"
+            android:background="@drawable/round_button"
+            android:contentDescription="Offline maps"
+            android:elevation="4dp"
+            android:src="@drawable/ic_download" />
+
+        <TextView
+            android:id="@+id/mapSource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="18dp"
+            android:background="#B3FFFFFF"
+            android:paddingHorizontal="4dp"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:background="#B3FFFFFF"
+            android:paddingHorizontal="4dp"
+            android:text="© OpenStreetMap contributors"
+            android:textColor="#333333"
+            android:textSize="11sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/compassPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/bigHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="--°"
+            android:textColor="@color/value"
+            android:textSize="64sp" />
+
+        <TextView
+            android:id="@+id/bigCardinal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/label"
+            android:textSize="28sp" />
+
+        <io.github.ksaye.mygps.CompassDialView
+            android:id="@+id/dial"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/northMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:textColor="@color/muted"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/calibrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF3CD"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Compass needs calibrating: wave the phone in a figure 8"
+            android:textColor="#664D03"
+            android:textSize="15sp"
+            android:visibility="gone" />
+    </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bar"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/tabData"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/tabDataIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_place" />
+            <TextView
+                android:id="@+id/tabDataText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tabMap"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/tabMapIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_map" />
+            <TextView
+                android:id="@+id/tabMapText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Map"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tabCompass"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/tabCompassIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_explore" />
+            <TextView
+                android:id="@+id/tabCompassText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Compass"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
